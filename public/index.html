@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouTube Video Downloader</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <form id="downloadForm">
+    <input type="text" id="url" placeholder="Enter YouTube video URL" required>
+    <button type="submit">Download</button>
+  </form>
+
+  <script>
+    document.getElementById('downloadForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var url = document.getElementById('url').value;
+      window.location.href = '/download?url=' + url;
+    });
+  </script>
+</body>
+</html>

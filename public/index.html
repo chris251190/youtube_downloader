@@ -7,6 +7,8 @@
 <body>
   <form id="downloadForm">
     <input type="text" id="url" placeholder="Enter YouTube video URL" required>
+    <input type="text" id="starttime" placeholder="Enter start time" required>
+    <input type="text" id="endtime" placeholder="Enter end time" required>
     <button type="submit">Download</button>
   </form>
 
@@ -14,7 +16,9 @@
     document.getElementById('downloadForm').addEventListener('submit', function(event) {
       event.preventDefault();
       var url = document.getElementById('url').value;
-      window.location.href = '/download?url=' + url;
+      var starttime = document.getElementById('starttime').value;
+      var endtime = document.getElementById('endtime').value;
+      window.location.href = '/download?url=' + url + '&starttime=' + starttime + '&endtime=' + endtime;
     });
   </script>
 </body>

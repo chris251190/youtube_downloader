@@ -42,6 +42,9 @@ app.get('/download', (req, res) => {
           }
         });
       })
+      .on('error', (err) => {
+        console.log('Error while processing video:', err);
+      })
       .save(filePath);
   });
   

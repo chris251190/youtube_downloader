@@ -9,7 +9,7 @@ const port = 3001;
 app.use(express.static('public'));
 
 app.get('/simple', (req, res) => {
-  res.send('This is a simple string');
+  res.send('This is a simple string!');
 });
 
 app.get('/download', (req, res) => {

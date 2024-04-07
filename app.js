@@ -4,6 +4,7 @@ const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
 const path = require('path');
 const app = express();
+const port = 3001;
 
 app.use(express.static('public'));
 
@@ -52,6 +53,6 @@ app.get('/download', (req, res) => {
       .save(filePath);
   });
   
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('Server is running on port 3000');
 });

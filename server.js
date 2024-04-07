@@ -8,6 +8,7 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('/download', (req, res) => {
+    console.log("Trying to download");
     const url = req.query.url;
     const starttime = req.query.starttime;
     const endtime = req.query.endtime;

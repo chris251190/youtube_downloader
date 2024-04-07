@@ -15,6 +15,7 @@
   <script>
     document.getElementById('downloadForm').addEventListener('submit', function(event) {
       event.preventDefault();
+      console.log("Downloading");
       var url = document.getElementById('url').value;
       var starttime = document.getElementById('starttime').value;
       var endtime = document.getElementById('endtime').value;

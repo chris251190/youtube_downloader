@@ -11,5 +11,15 @@
     <input type="text" id="endtime" placeholder="Enter end time" required>
     <button type="submit">Download</button>
   </form>
+
+  <script>
+    document.getElementById('downloadForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var url = document.getElementById('url').value;
+      var starttime = document.getElementById('starttime').value;
+      var endtime = document.getElementById('endtime').value;
+      window.location.href = '/download?url=' + url + '&starttime=' + starttime + '&endtime=' + endtime;
+    });
+  </script>
 </body>
 </html>

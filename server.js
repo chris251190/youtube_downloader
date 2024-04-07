@@ -7,6 +7,10 @@ const app = express();
 
 app.use(express.static('public'));
 
+app.get('/simple', (req, res) => {
+  res.send('This is a simple string');
+});
+
 app.get('/download', (req, res) => {
     console.log("Trying to download");
     const url = req.query.url;

@@ -30,6 +30,7 @@
             const a = document.createElement('a');
             a.href = data.downloadUrl;
             a.setAttribute('download', '');
+            a.setAttribute('target', '_blank');
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);

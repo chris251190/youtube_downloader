@@ -1,0 +1,84 @@
+/* Grundlegende Reset-Regeln */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Zentrierung des Hauptcontainers */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 20px;
+  }
+  
+  /* Stilisierung der Kopfzeile */
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FF0000;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  /* Stilisierung der Eingabegruppe */
+  .input-group {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .input-group:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Stilisierung des Eingabefelds und des Buttons */
+  .input-group input[type="text"],
+  .input-group button {
+    padding: 10px;
+    border: 2px solid #ddd;
+    margin-top: 8px;
+    border-radius: 4px;
+    width: 100%;
+    transition: border-color 0.3s;
+  }
+  
+  .input-group input[type="text"]:focus,
+  .input-group input[type="text"]:hover,
+  .input-group button:hover {
+    border-color: #FF0000;
+  }
+  
+  .input-group button {
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 16px;
+  }
+  
+  .input-group button:focus {
+    outline: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .input-group {
+      width: 100%;
+    }
+  }

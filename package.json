@@ -1,16 +1,15 @@
 {
-  "name": "youtube-downloader",
+  "name": "youtube_downloader",
   "version": "1.0.0",
-  "description": "Youtube Downloader",
-  "main": "app.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "build": "echo \"No build required\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2",
-    "ffmpeg": "^0.0.4",
-    "fluent-ffmpeg": "^2.1.2",
-    "ytdl-core": "^4.11.5"
+    "express": "^4.19.2"
   }
 }

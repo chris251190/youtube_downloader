@@ -11,15 +11,18 @@
   </div>
   <div class="container">
     <div class="input-group">
-      <input type="text" id="videoId" placeholder="YouTube Video ID">
+      <input type="text" id="videoId" placeholder="YouTube Video URL">
       <button id="downloadBtn">Download</button>
     </div>
   </div>
 
   <script>
     document.getElementById('downloadBtn').addEventListener('click', async () => {
-      const videoId = document.getElementById('videoId').value;
-      if (videoId) {
+      const videoUrl = document.getElementById('videoId').value;
+      // Regular expression to match YouTube video IDs from various URL formats
+      const videoIdMatch = videoUrl.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:shorts\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+      if (videoIdMatch) {
+        const videoId = videoIdMatch[1];
         try {
           // Senden Sie eine Anfrage an den Server, um die Video-URL zu erhalten
           const response = await fetch(`/videoInfo?videoId=${videoId}`);
@@ -40,7 +43,7 @@
           alert('Fehler beim Abrufen der Videoinformationen.');
         }
       } else {
-        alert('Bitte geben Sie eine Video-ID ein.');
+        alert('Bitte geben Sie eine gültige YouTube-URL ein.');
       }
     });
   </script>

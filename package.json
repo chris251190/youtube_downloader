@@ -11,6 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "ytdl-core": "^4.11.5"
+    "ytdl-core": "^4.11.5",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
   }
 }

@@ -13,17 +13,35 @@
   </form>
 
   <script>
-    document.getElementById('downloadForm').addEventListener('submit', function(event) {
+        document.getElementById('downloadForm').addEventListener('submit', function(event) {
       event.preventDefault();
       console.log("Downloading");
       var url = document.getElementById('url').value;
       var starttime = document.getElementById('starttime').value;
       var endtime = document.getElementById('endtime').value;
-      window.location.href = '/download?url=' + url + '&starttime=' + starttime + '&endtime=' + endtime;
-    });
-
-    document.getElementById('url').addEventListener('input', function(event) {
-      console.log("URL input value changed:", event.target.value);
+      // Use Fetch API to initiate download without navigating away
+      fetch(`/download?url=${encodeURIComponent(url)}&starttime=${encodeURIComponent(starttime)}&endtime=${encodeURIComponent(endtime)}`, {
+        method: 'GET'
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.blob();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(blob => {
+        // Create a link and set the URL as the blob URL
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        // Set the download name
+        a.download = 'downloaded_video.mp4';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+      })
+      .catch(error => console.error('Error:', error));
     });
   </script>
 </body>

@@ -1,32 +1,38 @@
 const express = require('express');
 const ytdl = require('ytdl-core');
 const app = express();
-const port = 3000;
 
-app.get('/download', (req, res) => {
-  // Ensure there is a query parameter 'videoId'
+app.use(express.static('public'));
+
+app.get('/videoInfo', async (req, res) => {
   const videoId = req.query.videoId;
   if (!videoId) {
-    return res.status(400).send('No video ID provided');
+    return res.status(400).send('Keine Video-ID angegeben');
   }
 
-  // Construct the YouTube video URL
   const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-
-  // Validate the URL
   if (!ytdl.validateURL(videoUrl)) {
-    return res.status(400).send('Invalid video URL');
+    return res.status(400).send('Ungültige Video-URL');
   }
 
-  // Set headers for the response to indicate a download
-  res.header('Content-Disposition', `attachment; filename="video-${videoId}.mp4"`);
-
-  // Use ytdl to download the video and pipe the stream to the response
-  ytdl(videoUrl, {
-    format: 'mp4'
-  }).pipe(res);
+  try {
+    // Holen Sie die Videoinformationen
+    const info = await ytdl.getInfo(videoUrl);
+    // Finden Sie den besten Stream mit Audio und Video
+    const format = ytdl.chooseFormat(info.formats, { quality: 'highest', filter: 'audioandvideo' });
+    if (format.url) {
+      // Senden Sie die URL des Formats an den Client
+      res.json({ downloadUrl: format.url });
+    } else {
+      res.status(404).send('Kein passendes Videoformat gefunden');
+    }
+  } catch (err) {
+    console.error('Fehler beim Abrufen der Videoinformationen: ', err);
+    res.status(500).send('Serverfehler beim Abrufen der Videoinformationen');
+  }
 });
 
+const port = 3000;
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`App läuft auf http://localhost:${port}`);
 });

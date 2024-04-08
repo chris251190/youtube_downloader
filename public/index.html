@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Downloader</title>
+</head>
+<body>
+  <input type="text" id="videoId" placeholder="YouTube Video ID">
+  <button id="downloadBtn">Download</button>
+
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', async () => {
+      const videoId = document.getElementById('videoId').value;
+      if (videoId) {
+        try {
+          // Senden Sie eine Anfrage an den Server, um die Video-URL zu erhalten
+          const response = await fetch(`/videoInfo?videoId=${videoId}`);
+          const data = await response.json();
+          if (data.downloadUrl) {
+            // Erstellen Sie einen temporären Link und klicken Sie darauf, um den Download zu starten
+            const a = document.createElement('a');
+            a.href = data.downloadUrl;
+            a.setAttribute('download', '');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          } else {
+            alert('Download-URL konnte nicht abgerufen werden.');
+          }
+        } catch (error) {
+          alert('Fehler beim Abrufen der Videoinformationen.');
+        }
+      } else {
+        alert('Bitte geben Sie eine Video-ID ein.');
+      }
+    });
+  </script>
+</body>
+</html>

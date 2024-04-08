@@ -77,7 +77,7 @@
   }
   
   /* Responsive Design */
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .input-group {
       width: 100%;
       padding: 10px; /* Reduced padding for smaller screens */

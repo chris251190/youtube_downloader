@@ -80,5 +80,16 @@
   @media (max-width: 768px) {
     .input-group {
       width: 100%;
+      padding: 10px; /* Reduced padding for smaller screens */
+    }
+    
+    .input-group input[type="text"],
+    .input-group button {
+      font-size: 16px; /* Larger font size for better readability */
+    }
+    
+    .header {
+      padding: 10px 0; /* Reduced header padding */
+      font-size: 20px; /* Adjusted font size for smaller screens */
     }
   }

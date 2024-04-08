@@ -1,7 +1,8 @@
 {
-  "version": 2,
-  "routes": [
-    { "src": "/simple", "dest": "/app.js" },
-    { "src": "/download", "dest": "/app.js" }
-  ]
-}
+    "version": 2,
+    "functions": {
+      "api/**/*.js": {
+        "runtime": "nodejs16.x"
+      }
+    }
+  }

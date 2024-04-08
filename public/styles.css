@@ -76,7 +76,6 @@
     outline: none;
   }
   
-  /* Responsive Design */
   @media (max-width: 768px) {
     .input-group {
       width: 100%;
